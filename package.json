@@ -1,6 +1,6 @@
 {
   "name": "date-fns-baguette",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "files": [
@@ -17,15 +17,15 @@
   "author": "Tech <tech@ouihelp.fr>",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "date-fns": "^2.0.0-beta.3",
     "jest": "^24.7.1",
     "prettier": "^1.17.0",
     "rollup": "^1.10.1",
     "rollup-plugin-typescript2": "^0.22.1",
     "rrule": "^2.6.0",
     "ts-jest": "^24.0.2",
-    "@types/jest": "^24.0.15",
-    "typescript": "^3.4.5",
-    "date-fns": "^2.0.0-beta.3"
+    "typescript": "^3.4.5"
   },
   "dependencies": {
     "timezone-support": "^2.0.2"
