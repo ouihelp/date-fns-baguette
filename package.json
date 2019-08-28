@@ -1,6 +1,6 @@
 {
   "name": "date-fns-baguette",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "files": [
@@ -23,7 +23,8 @@
     "rollup": "^1.10.1",
     "rollup-plugin-typescript2": "^0.23.0",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "date-fns": "^2.0.1"
   },
   "dependencies": {
     "timezone-support": "^2.0.2"
