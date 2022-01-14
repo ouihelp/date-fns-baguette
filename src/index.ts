@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format, formatDuration } from "date-fns";
 import { fr } from "date-fns/locale";
 
 import {
@@ -69,3 +69,12 @@ export const startOfDayBaguette = (date: Date): Date => {
 
 export const isSameDayBaguette = (leftDate: Date, rightDate): boolean =>
   startOfDayBaguette(leftDate).getTime() === startOfDayBaguette(rightDate).getTime();
+
+export const formatDurationBaguette = (
+  duration: Duration,
+  options?: {
+    format?: string[];
+    zero?: boolean;
+    delimiter?: string;
+  }
+) => formatDuration(duration, { locale: fr, ...(options || {}) });
