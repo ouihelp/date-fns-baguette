@@ -136,7 +136,13 @@ describe("formatDurationBaguette", () => {
       minutes: 5,
       seconds: 0,
     });
-    const formatedDuration = formatDurationBaguette(interval);
+    const formatedDuration = formatDurationBaguette(interval, [
+      "years",
+      "months",
+      "days",
+      "hours",
+      "minutes",
+    ]);
     expect(formatedDuration).toStrictEqual("39 ans 2 mois 20 jours 7 heures 5 minutes");
   });
 });
