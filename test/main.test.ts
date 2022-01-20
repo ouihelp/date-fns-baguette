@@ -1,8 +1,13 @@
-import { parseISO } from "date-fns";
+import { intervalToDuration, parseISO } from "date-fns";
 import { findTimeZone, populateTimeZones } from "timezone-support/dist/lookup-convert";
 
 import data from "../src/data/europe-paris-data";
-import { formatBaguette, startOfDayBaguette, isSameDayBaguette } from "../src";
+import {
+  formatBaguette,
+  startOfDayBaguette,
+  isSameDayBaguette,
+  formatDurationBaguette,
+} from "../src";
 import { makeAwareTime, TimeZoneInfo } from "../src/timezone-support";
 
 const EuropeParisTimeZone = findTimeZone("Europe/Paris") as TimeZoneInfo;
@@ -112,5 +117,32 @@ describe("isSameDayBaguette", () => {
     const day2 = parseISO("2019-03-22T00:00:00+01:00");
 
     expect(isSameDayBaguette(day1, day2)).toBeFalsy();
+  });
+});
+
+describe("formatDurationBaguette", () => {
+  test("duration between january 15, 1929 and april 4, 1968 is in French a correctly formated", () => {
+    // Get the duration between January 15, 1929 and April 4, 1968.
+    const interval = intervalToDuration({
+      start: new Date(1929, 0, 15, 12, 0, 0),
+      end: new Date(1968, 3, 4, 19, 5, 0),
+    });
+    // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
+    expect(interval).toStrictEqual({
+      years: 39,
+      months: 2,
+      days: 20,
+      hours: 7,
+      minutes: 5,
+      seconds: 0,
+    });
+    const formatedDuration = formatDurationBaguette(interval, [
+      "years",
+      "months",
+      "days",
+      "hours",
+      "minutes",
+    ]);
+    expect(formatedDuration).toStrictEqual("39 ans 2 mois 20 jours 7 heures 5 minutes");
   });
 });
